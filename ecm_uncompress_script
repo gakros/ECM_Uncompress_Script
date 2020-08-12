@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#This is a mass ECM Uncompress script
+#Change location of the root folder either at cd or find
+#
+#It creates and reads a txt file
+
+cd .
+echo 'currently at:'
+pwd
+find . -print | grep "\.ecm" > text.txt
+
+while read x; 
+do
+  echo "Working on: $x"
+  ecm uncompress $x
+
+done <text.txt
+
+echo "removing residues"
+rm text.txt
